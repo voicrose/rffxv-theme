@@ -1,0 +1,768 @@
+// FFXV Subreddit Theme
+// ---------------
+// Site:          https://reddit.com/r/FFXV
+// Development:   https://github.com/aentan/rffxv-theme
+// Authors:       Rngeez/Voicrose, DEmonicpizzapan
+
+
+// Table of Contents
+// ---------------
+// Use this to quickly locate sections of the stylesheet.
+
+// 1. CSS Reset
+// 2. FFXV Fonts!
+// 3. Variables & Mixins
+// 4: Typography
+// 5: Layout
+//    5.1 Header
+//    5.2 Main
+//    5.3 Side
+// 6: etc
+
+
+// 1. CSS Reset
+// ---------------
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+// 2. FFXV Fonts!
+// ---------------
+
+@font-face {
+  font-family: 'TeXGyreAdventor';
+  src: url('https://fontlibrary.org/assets/fonts/tex-gyre-adventor/e30926edb4b41933338d79368a3dca08/9cd48b3909a515a4529b85bce81de7e0/TeXGyreAdventorBold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TeXGyreAdventor';
+  src: url('https://fontlibrary.org/assets/fonts/tex-gyre-adventor/e30926edb4b41933338d79368a3dca08/28f66e8945b451b6469af548bb9b2c5c/TeXGyreAdventorBoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'TeXGyreAdventor';
+  src: url('https://fontlibrary.org/assets/fonts/tex-gyre-adventor/e30926edb4b41933338d79368a3dca08/5dad768717aa1c2b61cbd13a01d9c5a3/TeXGyreAdventorItalic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'TeXGyreAdventor';
+  src: url('https://fontlibrary.org/assets/fonts/tex-gyre-adventor/e30926edb4b41933338d79368a3dca08/61abfb681193c03b899cd27fad39e3d6/TeXGyreAdventorRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+// 3. Variables & Mixins
+// ---------------
+
+$text-color:              #e1e0ff;
+$text-color-muted:        #81809a;
+$accent-color-primary:    #3d3d99;
+$accent-color-secondary:  #484BA7;
+$body-background-color:   #1b1b29;
+$item-background-color:   #222235;
+$accent-background-color: #292845;
+$item-border:             1px solid rgba(white, 0.2);
+
+@mixin decorative-corners() {
+  position: relative;
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    content: "";
+    width: 4px;
+    height: 4px;
+    background: url('http://b.thumbs.redditmedia.com/3vonlsuJYtk8wLWIOSQIPIhQ6-aiHkp0gMgFbtzktlQ.png');
+  }
+  &:after {
+    transform: rotate(180deg);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    index: 1000;
+    content: "";
+    width: 4px;
+    height: 4px;
+    background: url('http://b.thumbs.redditmedia.com/3vonlsuJYtk8wLWIOSQIPIhQ6-aiHkp0gMgFbtzktlQ.png');
+  }
+}
+
+@mixin textfield() {
+  outline: none;
+  border: 1px solid rgba(white, 0.4);
+  background-color: $body-background-color;
+  height: 35px;
+  color: $text-color;
+  font-family: 'TeXGyreAdventor';
+  font-size: 1.2rem;
+  padding: 0 10px;
+  &::placeholder {
+    font-family: 'TeXGyreAdventor';
+    text-transform: capitalize;
+    color: $text-color-muted;
+    font-size: 1.2rem;
+  }
+}
+
+@mixin button() {
+  @include decorative-corners();
+  border: 0;
+  color: $text-color;
+  text-shadow: 0 0 4px #695679;
+  font-weight: normal;
+  letter-spacing: 0.1rem;
+  text-transform: capitalize;
+  background-color: $accent-color-primary;
+}
+
+
+// 4. Typography
+// ------------------------------------
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'TeXGyreAdventor';
+  color: $text-color;
+}
+
+a {
+  color: $accent-color-secondary;
+}
+
+
+
+// 5. Layout
+// ------------------------------------
+
+body {
+  background-color: $body-background-color;
+}
+
+#header {
+  background: url('http://b.thumbs.redditmedia.com/04KxOi0_ZtqoMDd4PK6ASQqxaHYDvAKd0O8c6femP8o.png') no-repeat right center;
+  background-size: cover;
+  height: 192px;
+  position: relative;
+  border-bottom: 1px solid rgba(white, 0.25);
+}
+
+// 5.1 Header
+// ---------------
+
+#sr-header-area {
+  background-color: rgba(#1C1C41, 0.24);
+  border-bottom: 0;
+  height: 24px;
+  font-size: 1.0rem;
+
+  .dropdown.srdrop {
+    line-height: 24px;
+    .selected {
+      line-height: 24px;
+      color: rgba(white, 0.6);
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  .sr-list {
+    > .separator {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  .sr-bar {
+    a {
+      line-height: 24px;
+      color: rgba(white, 0.6);
+    }
+    li {
+      margin-left: 4px;
+      margin-right: 4px;
+    }
+    .separator {
+      display: none;
+    }
+  }
+
+  #sr-more-link {
+    display: none;
+  }
+}
+
+#header-bottom-left {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+
+  .redditname {
+    background: url('http://b.thumbs.redditmedia.com/Xa1IZod_3ACsXhzbEjMjdFLa1FfYf7zox7PAaQOGnAw.png') no-repeat 23.6% center;
+    background-size: contain;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+    text-indent: 102%;
+    white-space: nowrap;
+    overflow: hidden;
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .tabmenu {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-top: 0;
+    width: calc(100% - 330px);
+    height: 48px;
+    background-image: linear-gradient(to left, rgba(28, 28, 65, 0), #1c1c41 52%, rgba(28, 28, 65, 0));
+    display: flex;
+    justify-content: center;
+    align-contents: center;
+    align-items: center;
+    &:before {
+      content: "";
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-image: linear-gradient(to left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0));
+    }
+    li {
+      font-size: 2rem;
+      line-height: 48px;
+      font-weight: normal;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+      margin: 0;
+      a {
+        background-color: transparent;
+        color: rgba($text-color, 0.5);
+        padding-left: 15px;
+        padding-right: 15px;
+        line-height: 48px;
+        display: block;
+        text-shadow: 0 0 4px $accent-color-secondary;
+      }
+      &.selected a {
+        border: 0;
+        color: #e1e0ff;
+      }
+    }
+  }
+}
+
+// Hide some sections
+.listing-page .tabmenu li:nth-of-type(3),
+.listing-page .tabmenu li:nth-of-type(4),
+.listing-page .tabmenu li a[href *="/promoted"],
+.listing-page .tabmenu li a[href *="/gilded"] {
+  display: none
+}
+
+#header-bottom-right {
+  height: 40px;
+  padding: 0 15px;
+  background-image: linear-gradient(to right, rgba(30, 38, 58, 0), #0d111b);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  &:before {
+    content: "";
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
+  }
+  .separator {
+    visibility: hidden;
+    margin: 0 2px;
+  }
+  .flat-list a,
+  .logout a {
+    text-transform: capitalize;
+  }
+}
+
+.user {
+  color: $text-color;
+}
+
+.pref-lang {
+  font-weight: normal;
+}
+
+// 5.2 Main
+// ---------------
+
+.content {
+  margin: 0;
+}
+
+.linklisting {
+  margin-right: 330px;
+  padding: 15px;
+}
+
+.thing {
+  margin-bottom: 15px;
+  display: flex;
+  position: relative;
+
+  .rank {
+    display: none;
+  }
+
+  .title {
+    color: rgba($text-color, 0.75);
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+    letter-spacing: 0.05rem;
+    text-shadow: 0 0 4px #695679;
+    margin-bottom: 10px;
+    &:visited {
+      color: $text-color;
+    }
+  }
+
+  &.stickied {
+    &.link a.title {
+      color: $text-color;
+      font-weight: normal;
+    }
+  }
+}
+
+.link {
+  padding: 15px 15px 15px 75px;
+  border: $item-border;
+  background-color: $item-background-color;
+  @include decorative-corners();
+  .score {
+    font-size: 1.6rem;
+    font-weight: normal;
+    color: $text-color-muted;
+    letter-spacing: 0.1rem;
+    &.likes {
+      color: $text-color;
+      text-shadow: 0 2px 4px #554bbd;
+    }
+  }
+  .linkflairlabel {
+    background-color: transparent;
+    color: rgba($text-color, 0.5);
+    font-size: 1.3rem;
+    border: 0;
+    border-radius: 0;
+    padding: 0 5px 1px;
+    margin-right: 7px;
+    line-height: 1.9rem;
+    vertical-align: 2px;
+    text-shadow: none;
+    @include decorative-corners();
+  }
+  .midcol {
+    width: 60px !important;
+    background-color: $accent-background-color;
+    padding: 12px 0;
+    > div {
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+  }
+}
+
+.comment {
+  padding: 15px 15px 15px 45px;
+  position: relative;
+  .midcol {
+    width: 30px !important;
+    padding: 12px 0;
+  }
+}
+
+.midcol {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+  height: calc(100% - 24px);
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: center;
+}
+
+.arrow {
+  background-size: 26px 26px;
+  width: 26px;
+  height: 26px;
+  &.up, &.down, &.upmod, &.downmod {
+    background-image: url('http://b.thumbs.redditmedia.com/9vQZDa0XFuy2gFI3Op25-FZg0xKGZ1O1bFXKekHGvjo.png');
+    background-position: 0 0;
+    opacity: 0.3;
+  }
+  &.down, &.downmod {
+    transform: rotate(180deg);
+  }
+  &.upmod, &.downmod {
+    opacity: 1;
+  }
+}
+
+.thumbnail {
+  border: $item-border;
+  margin-right: 15px;
+  margin-bottom: 0;
+  width: 88px;
+  min-height: 64px;
+  max-height: 64px;
+  height: auto;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  background-color: $item-background-color;
+  @include decorative-corners();
+  &.self {
+    background: url('http://b.thumbs.redditmedia.com/ZrNQTfcRRMsvQYgDZ4Gsqtd3ZygFMh71AmEXRjqUhPM.jpg') no-repeat center center;
+    background-size: contain;
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.entry {
+  margin-left: 0;
+  width: 100%;
+  .buttons li {
+    font-size: 1.2rem;
+    a {
+      font-weight: normal;
+      color: $accent-color-secondary;
+    }
+  }
+}
+
+.expando-button {
+  margin-right: 10px;
+  margin-bottom: 0;
+  height: 25px;
+  width: 25px;
+  border: 1px solid $accent-background-color;
+  text-align: center;
+  color: $text-color-muted;
+  line-height: 20px;
+  font-size: 1.4rem;
+  &.collapsed.selftext {
+    background-color: transparent;
+    background-image: none;
+    &:before {
+      content: "+";
+    }
+  }
+  &.expanded.selftext {
+    background-color: $accent-background-color;
+    background-image: none;
+    &:before {
+      content: "-";
+    }
+  }
+}
+
+.tagline {
+  color: $text-color-muted;
+  font-size: 1.1rem;
+  line-height: 1.4rem;
+  letter-spacing: 0.05rem;
+  a {
+    color: $accent-color-secondary;
+    &.moderator {
+      color: $accent-color-secondary;
+    }
+  }
+  .stickied-tagline {
+    color: $text-color-muted;
+  }
+}
+
+.domain {
+  position: absolute;
+  right: 7px;
+  bottom: 5px;
+  font-size: 1.1rem;
+  color: $item-background-color;
+  a {
+    color: $text-color-muted;
+  }
+}
+
+
+// 5.3 Side
+// ---------------
+
+.side {
+  background-color: $item-background-color;
+  border: $item-border;
+  width: 300px;
+  margin: 15px;
+  padding: 15px;
+  color: $text-color;
+  line-height: 1.5rem;
+  .spacer {
+    margin: 0;
+  }
+}
+
+#search {
+  margin: -15px -15px 0;
+  background-color: $accent-background-color;
+  padding: 10px 20px;
+  position: relative;
+  input[type=text] {
+    width: 100%;
+    @include textfield();
+  }
+  &:before {
+    position: absolute;
+    content: "";
+    width: 17px;
+    height: 24px;
+    top: 16px;
+    left: 5px;
+    background: url('http://b.thumbs.redditmedia.com/I58G4gzlJnrV1WbYL_bblqBcbQDf7xy7XfoUhDHa0Ac.png');
+    background-size: 17px 24px;
+  }
+  &:after {
+    position: absolute;
+    content: "";
+    width: 17px;
+    height: 24px;
+    top: 16px;
+    right: 5px;
+    background: url('http://b.thumbs.redditmedia.com/I58G4gzlJnrV1WbYL_bblqBcbQDf7xy7XfoUhDHa0Ac.png');
+    background-size: 17px 24px;
+    transform: rotate(180deg);
+  }
+}
+
+.login-form-side {
+  margin: 0 -15px;
+  padding: 15px;
+  border: 0;
+  position: relative;
+
+  &:after {
+    content: "";
+    width: calc(100% - 30px);
+    margin: 0 15px;
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0));
+    background-color: transparent;
+  }
+
+  input[type=text],
+  input[type=password] {
+    margin: 0;
+    width: calc(50% - 5px);
+    @include textfield();
+  }
+
+  input[type=text] {
+    margin-right: 10px;
+  }
+
+  #remember-me {
+    margin: 0;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+  }
+
+  label {
+    padding: 0;
+  }
+
+  .submit {
+    margin: 0;
+    padding: 0;
+    button {
+      margin: 0;
+      padding: 7px 15px;
+      @include button();
+      text-transform: uppercase;
+    }
+  }
+}
+
+.submit {
+  margin: 0 -15px;
+  padding: 15px;
+  .morelink {
+    background-image: none;
+    border: 0;
+    height: 35px;
+    a {
+      line-height: 33px;
+      @include button();
+    }
+    .nub {
+      display: none;
+    }
+  }
+}
+
+.submit-text {
+  padding-top: 0;
+}
+
+
+.titlebox {
+  h1 {
+    margin-bottom: 15px;
+    a {
+      color: inherit;
+      font-weight: normal;
+    }
+  }
+  .subscribe-button {
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-weight: normal;
+    .add {
+      display: inline-block;
+      font-size: 1.3rem;
+      letter-spacing: 0.1rem;
+      font-weight: normal;
+      line-height: 3rem;
+      padding: 0 10px;
+      background-color: green;
+      background-image: none;
+      border: 0;
+    }
+  }
+
+  .users-online {
+    margin-bottom: 15px;
+  }
+
+  .leavemoderator,
+  form.toggle {
+    color: inherit;
+    background-color: transparent;
+  }
+
+  .bottom {
+    border-top: 0;
+    padding-top: 15px;
+    &:before {
+      content: "";
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-image: linear-gradient(to left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0));
+      background-color: transparent;
+    }
+  }
+}
+
+.md {
+  color: $text-color-muted;
+
+  a {
+    color: $accent-color-secondary;
+  }
+
+  hr {
+    margin: 20px 0;
+    background-image: linear-gradient(to left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0));
+    background-color: transparent;
+    border: 0;
+    height: 1px;
+  }
+}
+
+.sidecontentbox .content {
+  border: 0;
+}
+
+
+
