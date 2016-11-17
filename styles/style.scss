@@ -160,7 +160,6 @@ $item-border:             1px solid rgba(white, 0.2);
 }
 
 @mixin button() {
-  @include decorative-corners();
   border: 0;
   color: $text-color;
   text-shadow: 0 0 4px #695679;
@@ -585,7 +584,7 @@ body {
   background-color: $body-background-color;
   width: 300px;
   margin: 15px;
-  margin-top: 440px;
+  margin-top: 450px;
   color: $text-color;
   line-height: 1.5rem;
   float: right;
@@ -602,35 +601,38 @@ body {
     position: absolute;
     top: 144px;
     z-index: 1;
+    border: $item-border;
   }
   .titlebox {
     h1.redditname {
       position: absolute;
       top: 400px;
       z-index: 100;
+      line-height: 1.7rem;
       &:before {
+        border: $item-border;
         @include decorative-corners();
-        background-color: $item-background-color;
-        box-sizing: border-box;
+        background-color: $accent-background-color;
         content: "";
         position: absolute;
         display: block;
         width: 300px;
         z-index: -1;
         height: 65px;
-        margin: -15px 0 0 -15px;
+        margin: -15px 0 0 -16px;
       }
     }
     span.subscribers {
       position: absolute;
       z-index: 100;
-      top: 420px;
+      top: 425px;
+      color: $text-color-muted;
     }
     .fancy-toggle-button {
       margin: 0;
       position: absolute;
       right: 30px;
-      top: 402px;
+      top: 404px;
       z-index: 100;
     }
   }
@@ -638,10 +640,10 @@ body {
 
 #search {
   padding: 10px;
-  margin: 0 5px;
+  margin: 0 20px;
   position: absolute;
-  top: 455px;
-  width: 270px;
+  top: 465px;
+  width: 240px;
   z-index: 1;
   input[type=text] {
     width: 100%;
@@ -722,7 +724,7 @@ body {
   width: 300px;
   height: 35px;
   position: absolute;
-  top: 520px;
+  top: 535px;
   a {
     line-height: 33px;
     @include button();
