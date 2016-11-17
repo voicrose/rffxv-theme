@@ -109,16 +109,22 @@ table {
 // 3. Variables & Mixins
 // ---------------
 
-$text-color:              #e1e0ff;
-$text-color-muted:        #81809a;
 $accent-color-primary:    #3d3d99;
-$accent-color-secondary:  #484BA7;
+$accent-color-secondary:  #696dd8;
+
+$text-color:              #c7c6d1;
+$text-color-muted:        #81809a;
+$link-color-primary:      $accent-color-secondary;
+$link-color-secondary:    #a1a4ff;
+$link-color-muted:        #676896;
+
 $body-background-color:   #1b1b29;
 $item-background-color:   #222235;
 $accent-background-color: #292845;
 $item-border:             1px solid rgba(white, 0.2);
 // $default-font:         'TeXGyreAdventor'
 $default-font:            Avant Garde, Avantgarde, Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+$button-font:             Futura, Trebuchet MS, Arial, sans-serif;
 
 @mixin decorative-corners() {
   position: relative;
@@ -166,10 +172,11 @@ $default-font:            Avant Garde, Avantgarde, Century Gothic, CenturyGothic
   border: 0;
   border-radius: 0;
   color: $text-color;
-  text-shadow: 0 0 4px #695679;
+  //text-shadow: 0 0 4px #695679;
+  font-family: $button-font;
   font-weight: normal;
   letter-spacing: 0.1rem;
-  text-transform: capitalize;
+  text-transform: uppercase;
   background-color: $accent-color-primary;
 }
 
@@ -188,7 +195,7 @@ body {
 }
 
 a {
-  color: $accent-color-secondary;
+  color: $link-color-primary;
 }
 
 
@@ -311,17 +318,17 @@ body {
       margin: 0;
       a {
         background-color: transparent;
-        color: rgba($text-color, 0.5);
+        color: $link-color-muted;
         padding-left: 15px;
         padding-right: 15px;
         height: 44px;
         padding-top: 4px;
         display: block;
-        text-shadow: 0 0 4px $accent-color-secondary;
+        //text-shadow: 0 0 4px $link-color-primary;
       }
       &.selected a {
         border: 0;
-        color: #e1e0ff;
+        color: $link-color-secondary;
       }
     }
   }
@@ -411,17 +418,17 @@ body {
   }
 
   .title {
-    color: rgba($text-color, 0.75);
-    font-size: 1.8rem;
-    line-height: 2.4rem;
+    color: $text-color;
+    font-size: 1.6rem;
+    line-height: 2.0rem;
     letter-spacing: 0.05rem;
-    margin-bottom: 10px;
+    margin: 5px 0;
     a:link {
-      text-shadow: 0 0 4px #695679;
+      //text-shadow: 0 0 4px #695679;
     }
     a:visited {
-      color: $accent-color-secondary;
-      text-shadow: none;
+      color: $link-color-muted;
+      //text-shadow: none;
     }
   }
 
@@ -449,7 +456,7 @@ body {
   .help {
     right: 15px;
     bottom: -5px;
-    color: $accent-color-secondary;
+    color: $link-color-primary;
   }
 
   .sponsored-tagline {
@@ -483,8 +490,8 @@ body {
     letter-spacing: 0.1rem;
     margin: 3px 0 -3px;
     &.likes {
-      color: $text-color;
-      text-shadow: 0 2px 4px #554bbd;
+      color: $link-color-secondary;
+      //text-shadow: 0 2px 4px #554bbd;
     }
   }
   .linkflairlabel {
@@ -497,7 +504,7 @@ body {
     margin-right: 7px;
     line-height: 1.9rem;
     vertical-align: 2px;
-    text-shadow: none;
+    //text-shadow: none;
     @include decorative-corners();
   }
   .midcol {
@@ -514,16 +521,21 @@ body {
 .link .usertext-body .md {
   background-color: $item-background-color;
   border: 0;
+  border-radius: 0;
   background: linear-gradient(to right, rgba($item-background-color,1) 0%, rgba($item-background-color,0) 100%);
   margin-bottom: 15px;
   color: $text-color;
 }
 
 .comment {
-  padding: 15px 15px 15px 45px;
+  padding: 15px 15px 15px 35px;
   margin-bottom: 10px;
   position: relative;
   flex-wrap: wrap;
+
+  .content .details {
+    margin-left: 0;
+  }
 
   &.collapsed {
     .tagline,
@@ -542,7 +554,8 @@ body {
 
   .midcol {
     width: 30px !important;
-    padding: 12px 0;
+    padding: 10px 0;
+    margin-left: 5px;
   }
   .tagline {
     margin-bottom: 5px;
@@ -550,9 +563,10 @@ body {
   }
   .child,
   .showreplies {
-    margin-top: 0;
+    margin-top: 10px;
     margin-right: 0;
     border-left: 0;
+    margin-left: 0;
   }
   .md {
     color: $text-color;
@@ -626,37 +640,31 @@ body {
     font-size: 1.2rem;
     a {
       font-weight: normal;
-      color: $accent-color-secondary;
+      color: $link-color-secondary;
       text-transform: capitalize;
     }
   }
 }
 
+.comment .entry .buttons a {
+  color: $link-color-muted;
+}
+
 .expando-button {
-  margin-right: 10px;
-  margin-bottom: 0;
+  margin: 4px 10px 4px 0;
   height: 25px;
   width: 25px;
-  border: 1px solid $accent-background-color;
   text-align: center;
   color: $text-color-muted;
   line-height: 20px;
   font-size: 1.4rem;
   &.collapsed.selftext,
   &.collapsed.video {
-    background-color: transparent;
-    background-image: none;
-    &:before {
-      content: "+";
-    }
+    // plus
   }
   &.expanded.selftext,
   &.expanded.video {
-    background-color: $accent-background-color;
-    background-image: none;
-    &:before {
-      content: "-";
-    }
+    // minus
   }
 }
 
@@ -672,10 +680,13 @@ body {
   font-size: 1.1rem;
   line-height: 1.4rem;
   letter-spacing: 0.05rem;
+  &:first-letter {
+    text-transform: uppercase;
+  }
   a {
-    color: $accent-color-secondary;
+    color: $link-color-primary;
     &.moderator {
-      color: $accent-color-secondary;
+      color: $link-color-primary;
     }
   }
   .stickied-tagline {
@@ -689,7 +700,7 @@ body {
   bottom: 5px;
   font-size: 1.1rem;
   color: $item-background-color;
-  text-shadow: none;
+  //text-shadow: none;
   a {
     color: $text-color-muted;
   }
@@ -717,7 +728,7 @@ body {
 
     .toggle a {
       font-weight: normal;
-      color: $accent-color-secondary;
+      color: $link-color-primary;
       font-size: 1.2rem;
       line-height: 1.5rem;
       text-transform: capitalize;
@@ -780,8 +791,11 @@ body {
 }
 
 .tagline .submitter,
-.search-result-meta .submitter {
-  color: $accent-color-secondary;
+.search-result-meta .submitter,
+.tagline .author,
+.search-result-meta .author {
+  color: $link-color-secondary;
+  font-size: 1.3rem;
 }
 
 .footer-parent {
@@ -929,6 +943,25 @@ form.content {
   }
 }
 
+.linkinfo {
+  background-color: $item-background-color;
+  border: $item-border;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 0;
+  .date {
+    margin-bottom: 5px;
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
+  .shortlink {
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
+}
+
 #ad_main_top,
 #ad_main {
   background-color: rgba(black, 0.1);
@@ -984,7 +1017,7 @@ form.content {
   position: absolute;
   top: 535px;
   a {
-    line-height: 38px;
+    line-height: 35px;
     @include button();
   }
   .nub {
@@ -1052,10 +1085,22 @@ form.content {
 }
 
 .md {
-  color: $text-color-muted;
+  color: $text-color;
+
+  .-blocks,
+  .-lists,
+  pre,
+  blockquote,
+  table,
+  p,
+  ul,
+  ol {
+    margin-top: 1.3rem;
+    margin-bottom: 1.3rem;
+  }
 
   a {
-    color: $accent-color-secondary;
+    color: $link-color-primary;
   }
 
   hr {
