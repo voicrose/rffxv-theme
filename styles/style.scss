@@ -12,12 +12,13 @@
 // 1. CSS Reset
 // 2. FFXV Fonts!
 // 3. Variables & Mixins
-// 4: Typography
-// 5: Layout
+// 4. Typography
+// 5. Layout
 //    5.1 Header
 //    5.2 Main
 //    5.3 Side
-// 6: etc
+// 6. Background
+// 7. Mod page
 
 
 // 1. CSS Reset
@@ -76,33 +77,33 @@ table {
 // 2. FFXV Fonts!
 // ---------------
 
-@font-face {
-  font-family: 'TeXGyreAdventor';
-  src: url('https://fontlibrary.org/assets/fonts/tex-gyre-adventor/e30926edb4b41933338d79368a3dca08/9cd48b3909a515a4529b85bce81de7e0/TeXGyreAdventorBold.ttf') format('truetype');
-  font-weight: bold;
-  font-style: normal;
-}
+// @font-face {
+//   font-family: 'TeXGyreAdventor';
+//   src: url('https://fontlibrary.org/assets/fonts/tex-gyre-adventor/e30926edb4b41933338d79368a3dca08/9cd48b3909a515a4529b85bce81de7e0/TeXGyreAdventorBold.ttf') format('truetype');
+//   font-weight: bold;
+//   font-style: normal;
+// }
 
-@font-face {
-  font-family: 'TeXGyreAdventor';
-  src: url('https://fontlibrary.org/assets/fonts/tex-gyre-adventor/e30926edb4b41933338d79368a3dca08/28f66e8945b451b6469af548bb9b2c5c/TeXGyreAdventorBoldItalic.ttf') format('truetype');
-  font-weight: bold;
-  font-style: italic;
-}
+// @font-face {
+//   font-family: 'TeXGyreAdventor';
+//   src: url('https://fontlibrary.org/assets/fonts/tex-gyre-adventor/e30926edb4b41933338d79368a3dca08/28f66e8945b451b6469af548bb9b2c5c/TeXGyreAdventorBoldItalic.ttf') format('truetype');
+//   font-weight: bold;
+//   font-style: italic;
+// }
 
-@font-face {
-  font-family: 'TeXGyreAdventor';
-  src: url('https://fontlibrary.org/assets/fonts/tex-gyre-adventor/e30926edb4b41933338d79368a3dca08/5dad768717aa1c2b61cbd13a01d9c5a3/TeXGyreAdventorItalic.ttf') format('truetype');
-  font-weight: normal;
-  font-style: italic;
-}
+// @font-face {
+//   font-family: 'TeXGyreAdventor';
+//   src: url('https://fontlibrary.org/assets/fonts/tex-gyre-adventor/e30926edb4b41933338d79368a3dca08/5dad768717aa1c2b61cbd13a01d9c5a3/TeXGyreAdventorItalic.ttf') format('truetype');
+//   font-weight: normal;
+//   font-style: italic;
+// }
 
-@font-face {
-  font-family: 'TeXGyreAdventor';
-  src: url('https://fontlibrary.org/assets/fonts/tex-gyre-adventor/e30926edb4b41933338d79368a3dca08/61abfb681193c03b899cd27fad39e3d6/TeXGyreAdventorRegular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
+// @font-face {
+//   font-family: 'TeXGyreAdventor';
+//   src: url('https://fontlibrary.org/assets/fonts/tex-gyre-adventor/e30926edb4b41933338d79368a3dca08/61abfb681193c03b899cd27fad39e3d6/TeXGyreAdventorRegular.ttf') format('truetype');
+//   font-weight: normal;
+//   font-style: normal;
+// }
 
 
 // 3. Variables & Mixins
@@ -116,6 +117,8 @@ $body-background-color:   #1b1b29;
 $item-background-color:   #222235;
 $accent-background-color: #292845;
 $item-border:             1px solid rgba(white, 0.2);
+// $default-font:         'TeXGyreAdventor'
+$default-font:            Avant Garde, Avantgarde, Century Gothic, CenturyGothic, AppleGothic, sans-serif;
 
 @mixin decorative-corners() {
   position: relative;
@@ -127,18 +130,18 @@ $item-border:             1px solid rgba(white, 0.2);
     content: "";
     width: 4px;
     height: 4px;
-    background: url('http://b.thumbs.redditmedia.com/3vonlsuJYtk8wLWIOSQIPIhQ6-aiHkp0gMgFbtzktlQ.png');
+    background: url(%%vote-arrow%%);
   }
   &:after {
     transform: rotate(180deg);
     position: absolute;
     bottom: 0;
     right: 0;
-    index: 1000;
+    z-index: 1000;
     content: "";
     width: 4px;
     height: 4px;
-    background: url('http://b.thumbs.redditmedia.com/3vonlsuJYtk8wLWIOSQIPIhQ6-aiHkp0gMgFbtzktlQ.png');
+    background: url(%%vote-arrow%%);
   }
 }
 
@@ -148,11 +151,11 @@ $item-border:             1px solid rgba(white, 0.2);
   background-color: $body-background-color;
   height: 35px;
   color: $text-color;
-  font-family: 'TeXGyreAdventor';
+  font-family: $default-font;
   font-size: 1.2rem;
   padding: 0 10px;
   &::placeholder {
-    font-family: 'TeXGyreAdventor';
+    font-family: $default-font;
     text-transform: capitalize;
     color: $text-color-muted;
     font-size: 1.2rem;
@@ -179,7 +182,8 @@ html {
 }
 
 body {
-  font-family: 'TeXGyreAdventor';
+  // font-family: 'TeXGyreAdventor';
+  font-family: $default-font;
   color: $text-color;
 }
 
@@ -197,7 +201,7 @@ body {
 }
 
 #header {
-  background: url('http://b.thumbs.redditmedia.com/04KxOi0_ZtqoMDd4PK6ASQqxaHYDvAKd0O8c6femP8o.png') no-repeat right center;
+  background: url(%%header%%) no-repeat right center;
   background-size: cover;
   height: 192px;
   position: relative;
@@ -213,6 +217,8 @@ body {
   border-bottom: 0;
   height: 24px;
   font-size: 1.0rem;
+  position: relative;
+  z-index: 1;
 
   .dropdown.srdrop {
     line-height: 24px;
@@ -258,7 +264,7 @@ body {
   bottom: 0;
 
   .redditname {
-    background: url('http://b.thumbs.redditmedia.com/Xa1IZod_3ACsXhzbEjMjdFLa1FfYf7zox7PAaQOGnAw.png') no-repeat 23.6% center;
+    background: url(%%XV%%) no-repeat 23.6% center;
     background-size: contain;
     position: absolute;
     width: 100%;
@@ -285,7 +291,7 @@ body {
     background-image: linear-gradient(to left, rgba(28, 28, 65, 0), #1c1c41 52%, rgba(28, 28, 65, 0));
     display: flex;
     justify-content: center;
-    align-contents: center;
+    align-content: center;
     align-items: center;
     &:before {
       content: "";
@@ -308,7 +314,8 @@ body {
         color: rgba($text-color, 0.5);
         padding-left: 15px;
         padding-right: 15px;
-        line-height: 48px;
+        height: 44px;
+        padding-top: 4px;
         display: block;
         text-shadow: 0 0 4px $accent-color-secondary;
       }
@@ -370,12 +377,28 @@ body {
 // ---------------
 
 .content {
-  margin: 0;
+  margin: 15px;
+
+  > h1 {
+    font-size: 1.8rem;
+    text-transform: capitalize;
+  }
 }
 
-.linklisting {
+.listing-page,
+.comments-page {
+  .content {
+    margin: 0;
+  }
+}
+
+.linklisting,
+.organic-listing {
+  background-color: transparent !important;
+  border: 0;
   margin-right: 315px;
   padding: 15px;
+  overflow: visible;
 }
 
 .thing {
@@ -392,10 +415,13 @@ body {
     font-size: 1.8rem;
     line-height: 2.4rem;
     letter-spacing: 0.05rem;
-    text-shadow: 0 0 4px #695679;
     margin-bottom: 10px;
-    &:visited {
-      color: $text-color;
+    a:link {
+      text-shadow: 0 0 4px #695679;
+    }
+    a:visited {
+      color: $accent-color-secondary;
+      text-shadow: none;
     }
   }
 
@@ -407,6 +433,34 @@ body {
   }
 }
 
+.organic-listing {
+  margin-bottom: -10px;
+  .link,
+  .link.compressed,
+  .link.promotedlink {
+    // Fix promoted links alignment
+    padding: 15px 15px 15px 75px;
+  }
+
+  .promoted {
+    border: $item-border;
+  }
+
+  .help {
+    right: 15px;
+    bottom: -5px;
+    color: $accent-color-secondary;
+  }
+
+  .sponsored-tagline {
+    right: 5px;
+    bottom: 5px;
+    font-weight: normal;
+    color: $text-color-muted;
+  }
+}
+
+
 .link {
   padding: 15px 15px 15px 75px;
   border: $item-border;
@@ -417,11 +471,17 @@ body {
     margin-top: -16px;
   }
 
+  &.promotedlink.promoted,
+  &.promotedlink.external {
+    background-color: $item-background-color;
+  }
+
   .score {
     font-size: 1.6rem;
     font-weight: normal;
     color: $text-color-muted;
     letter-spacing: 0.1rem;
+    margin: 3px 0 -3px;
     &.likes {
       color: $text-color;
       text-shadow: 0 2px 4px #554bbd;
@@ -451,12 +511,59 @@ body {
   }
 }
 
+.link .usertext-body .md {
+  background-color: $item-background-color;
+  border: 0;
+  background: linear-gradient(to right, rgba($item-background-color,1) 0%, rgba($item-background-color,0) 100%);
+  margin-bottom: 15px;
+  color: $text-color;
+}
+
 .comment {
   padding: 15px 15px 15px 45px;
+  margin-bottom: 10px;
   position: relative;
+  flex-wrap: wrap;
+
+  &.collapsed {
+    .tagline,
+    .tagline a,
+    .search-result-meta,
+    .search-result-meta a {
+      color: $text-color-muted;
+    }
+  }
+
+  &.noncollapsed {
+    .child .usertext {
+      margin-top: 10px;
+    }
+  }
+
   .midcol {
     width: 30px !important;
     padding: 12px 0;
+  }
+  .tagline {
+    margin-bottom: 5px;
+    color: $text-color-muted;
+  }
+  .child,
+  .showreplies {
+    margin-top: 0;
+    margin-right: 0;
+    border-left: 0;
+  }
+  .md {
+    color: $text-color;
+  }
+}
+
+.new-comment {
+  background: linear-gradient(to right, rgba($item-background-color,1) 0%, rgba($item-background-color,0) 100%);
+  .usertext-body {
+    background-color: transparent;
+    border: 0;
   }
 }
 
@@ -477,7 +584,7 @@ body {
   width: 26px;
   height: 26px;
   &.up, &.down, &.upmod, &.downmod {
-    background-image: url('http://b.thumbs.redditmedia.com/9vQZDa0XFuy2gFI3Op25-FZg0xKGZ1O1bFXKekHGvjo.png');
+    background-image: url(%%vote-arrow%%);
     background-position: 0 0;
     opacity: 0.3;
   }
@@ -503,7 +610,7 @@ body {
   background-color: $item-background-color;
   @include decorative-corners();
   &.self {
-    background: url('http://b.thumbs.redditmedia.com/ZrNQTfcRRMsvQYgDZ4Gsqtd3ZygFMh71AmEXRjqUhPM.jpg') no-repeat center center;
+    background: url(%%thumbnail-placeholder%%) no-repeat center center;
     background-size: contain;
   }
   img {
@@ -582,6 +689,7 @@ body {
   bottom: 5px;
   font-size: 1.1rem;
   color: $item-background-color;
+  text-shadow: none;
   a {
     color: $text-color-muted;
   }
@@ -621,7 +729,7 @@ body {
   }
 
   .md {
-    margin: 0 0 10px;
+    margin: 0 0 5px;
   }
 }
 
@@ -692,6 +800,35 @@ body {
   line-height: 1.5rem;
 }
 
+.md {
+  blockquote {
+    border-left: 2px solid $accent-color-primary;
+    color: $text-color-muted;
+  }
+  code, pre {
+    background-color: $item-background-color;
+    border: 1px solid rgba(white, 0.1);
+    font-family: monospace;
+    font-size: 1.6rem;
+    color: $text-color-muted;
+  }
+}
+
+.new-comment .md :not(pre)>code,
+.link .md :not(pre)>code,
+.usertext.border .md :not(pre)>code,
+.new-comment .md pre, .link .md pre,
+.usertext.border .md pre {
+  background-color: $item-background-color;
+}
+
+form.content {
+  color: initial;
+}
+
+.infobar {
+
+}
 
 
 // 5.3 Side
@@ -713,7 +850,7 @@ body {
     width: 300px;
     height: 240px;
     display: block;
-    background-image: url('http://b.thumbs.redditmedia.com/82I30FHg7mXD_ZpF3uGO4rYW7i6BAHc8o8TZ65FXorE.jpg');
+    background-image: url(%%daystogo%%);
     background-size: cover;
     position: absolute;
     top: 144px;
@@ -776,7 +913,7 @@ body {
     height: 24px;
     top: 16px;
     left: -5px;
-    background: url('http://b.thumbs.redditmedia.com/I58G4gzlJnrV1WbYL_bblqBcbQDf7xy7XfoUhDHa0Ac.png');
+    background: url(%%textfield-sides%%);
     background-size: 17px 24px;
   }
   &:after {
@@ -786,7 +923,7 @@ body {
     height: 24px;
     top: 16px;
     right: -5px;
-    background: url('http://b.thumbs.redditmedia.com/I58G4gzlJnrV1WbYL_bblqBcbQDf7xy7XfoUhDHa0Ac.png');
+    background: url(%%textfield-sides%%);
     background-size: 17px 24px;
     transform: rotate(180deg);
   }
@@ -847,7 +984,7 @@ body {
   position: absolute;
   top: 535px;
   a {
-    line-height: 33px;
+    line-height: 38px;
     @include button();
   }
   .nub {
@@ -877,12 +1014,11 @@ body {
     text-transform: uppercase;
     font-weight: normal;
     .add {
-      display: inline-block;
       font-size: 1.3rem;
       letter-spacing: 0.1rem;
       font-weight: normal;
       line-height: 3rem;
-      padding: 0 10px;
+      padding: 10px 10px;
       background-color: green;
       background-image: none;
       border: 0;
@@ -955,15 +1091,27 @@ body {
   }
 }
 
+
+// 6. Background
+// ---------------
+
 html {
   height: auto;
 }
 
 body {
-  background-image: url('http://a.thumbs.redditmedia.com/1SquoEZM9CdCfrcMYzd2VCHbpIyViU4sHaQPjWcx4e4.png');
+  background-image: url(%%footer%%);
   background-position: 50% 100% !important;
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+
+// 7. Mod page
+// ---------------
+
+.sheets .col textarea {
+  width: calc(100% - 400px);
 }
 
 
