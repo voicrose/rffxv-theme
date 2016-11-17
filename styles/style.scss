@@ -161,6 +161,7 @@ $item-border:             1px solid rgba(white, 0.2);
 
 @mixin button() {
   border: 0;
+  border-radius: 0;
   color: $text-color;
   text-shadow: 0 0 4px #695679;
   font-weight: normal;
@@ -676,7 +677,7 @@ body {
 }
 
 .footer-parent {
-  padding: 90px 0 40px;
+  padding: 270px 0 40px;
 }
 
 .footer {
@@ -750,6 +751,9 @@ body {
       right: 30px;
       top: 404px;
       z-index: 100;
+      a {
+        border-radius: 0;
+      }
     }
   }
 }
