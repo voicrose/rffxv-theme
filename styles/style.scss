@@ -201,6 +201,7 @@ body {
   background-size: cover;
   height: 192px;
   position: relative;
+  z-index: 1;
   border-bottom: 1px solid rgba(white, 0.25);
 }
 
@@ -328,9 +329,11 @@ body {
 }
 
 #header-bottom-right {
+  bottom: 48px;
   height: 40px;
+  padding-bottom: 48px;
   padding: 0 15px;
-  background-image: linear-gradient(to right, rgba(30, 38, 58, 0), #0d111b);
+  background-image: linear-gradient(to right, rgba(30, 38, 70, 0), #0d111b);
   background-color: transparent;
   display: flex;
   align-items: center;
@@ -343,7 +346,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5));
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.25));
   }
   .separator {
     visibility: hidden;
@@ -371,7 +374,7 @@ body {
 }
 
 .linklisting {
-  margin-right: 330px;
+  margin-right: 315px;
   padding: 15px;
 }
 
@@ -409,6 +412,11 @@ body {
   border: $item-border;
   background-color: $item-background-color;
   @include decorative-corners();
+
+  &.stickied:nth-child(3) {
+    margin-top: -16px;
+  }
+
   .score {
     font-size: 1.6rem;
     font-weight: normal;
@@ -574,23 +582,67 @@ body {
 // ---------------
 
 .side {
-  background-color: $item-background-color;
-  border: $item-border;
+  background-color: $body-background-color;
   width: 300px;
   margin: 15px;
-  padding: 15px;
+  margin-top: 440px;
   color: $text-color;
   line-height: 1.5rem;
+  float: right;
   .spacer {
     margin: 0;
+  }
+  &:before {
+    content: "";
+    width: 300px;
+    height: 240px;
+    display: block;
+    background-image: url('http://b.thumbs.redditmedia.com/82I30FHg7mXD_ZpF3uGO4rYW7i6BAHc8o8TZ65FXorE.jpg');
+    background-size: cover;
+    position: absolute;
+    top: 144px;
+    z-index: 1;
+  }
+  .titlebox {
+    h1.redditname {
+      position: absolute;
+      top: 400px;
+      z-index: 100;
+      &:before {
+        @include decorative-corners();
+        background-color: $item-background-color;
+        box-sizing: border-box;
+        content: "";
+        position: absolute;
+        display: block;
+        width: 300px;
+        z-index: -1;
+        height: 65px;
+        margin: -15px 0 0 -15px;
+      }
+    }
+    span.subscribers {
+      position: absolute;
+      z-index: 100;
+      top: 420px;
+    }
+    .fancy-toggle-button {
+      margin: 0;
+      position: absolute;
+      right: 30px;
+      top: 402px;
+      z-index: 100;
+    }
   }
 }
 
 #search {
-  margin: -15px -15px 0;
-  background-color: $accent-background-color;
-  padding: 10px 20px;
-  position: relative;
+  padding: 10px;
+  margin: 0 5px;
+  position: absolute;
+  top: 455px;
+  width: 270px;
+  z-index: 1;
   input[type=text] {
     width: 100%;
     @include textfield();
@@ -601,7 +653,7 @@ body {
     width: 17px;
     height: 24px;
     top: 16px;
-    left: 5px;
+    left: -5px;
     background: url('http://b.thumbs.redditmedia.com/I58G4gzlJnrV1WbYL_bblqBcbQDf7xy7XfoUhDHa0Ac.png');
     background-size: 17px 24px;
   }
@@ -611,30 +663,23 @@ body {
     width: 17px;
     height: 24px;
     top: 16px;
-    right: 5px;
+    right: -5px;
     background: url('http://b.thumbs.redditmedia.com/I58G4gzlJnrV1WbYL_bblqBcbQDf7xy7XfoUhDHa0Ac.png');
     background-size: 17px 24px;
     transform: rotate(180deg);
   }
 }
 
-.login-form-side {
-  margin: 0 -15px;
-  padding: 15px;
-  border: 0;
-  position: relative;
+#ad_main_top {
+  background-color: rgba(black, 0.1);
+}
 
-  &:after {
-    content: "";
-    width: calc(100% - 30px);
-    margin: 0 15px;
-    height: 1px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background-image: linear-gradient(to left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0));
-    background-color: transparent;
-  }
+.login-form-side {
+  background-color: $item-background-color;
+  border: $item-border;
+  padding: 15px;
+  margin-bottom: 15px;
+  position: relative;
 
   input[type=text],
   input[type=password] {
@@ -648,7 +693,7 @@ body {
   }
 
   #remember-me {
-    margin: 0;
+    margin: 0 0 10px;
     font-size: 1.2rem;
     display: flex;
     align-items: center;
@@ -671,29 +716,32 @@ body {
   }
 }
 
-.submit {
-  margin: 0 -15px;
-  padding: 15px;
-  .morelink {
-    background-image: none;
-    border: 0;
-    height: 35px;
-    a {
-      line-height: 33px;
-      @include button();
-    }
-    .nub {
-      display: none;
-    }
+.morelink {
+  background-image: none;
+  border: 0;
+  width: 300px;
+  height: 35px;
+  position: absolute;
+  top: 520px;
+  a {
+    line-height: 33px;
+    @include button();
+  }
+  .nub {
+    display: none;
   }
 }
 
-.submit-text {
-  padding-top: 0;
+.sidebox.submit.submit-text .morelink {
+  margin-top: 50px;
 }
 
 
 .titlebox {
+  margin-top: 15px;
+  background-color: $item-background-color;
+  border: $item-border;
+  padding: 15px;
   h1 {
     margin-bottom: 15px;
     a {
