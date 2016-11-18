@@ -792,6 +792,16 @@ body {
     font-size: 1.3rem;
     text-transform: capitalize;
   }
+
+  &.grayed {
+    .usertext-body {
+      color: $text-color-muted;
+      background-color: $item-background-color;
+      .md {
+        margin-bottom: 0;
+      }
+    }
+  }
 }
 
 .panestack-title {
@@ -920,7 +930,7 @@ form.content {
     span.subscribers {
       position: absolute;
       z-index: 100;
-      top: 425px;
+      top: $header-height + 233px;
       color: $text-color-muted;
     }
     .fancy-toggle-button {
@@ -1179,12 +1189,26 @@ body {
 }
 
 
-// 7. Mod page
+// 7. Mod Stuff
 // ---------------
 
 .sheets .col textarea {
   width: calc(100% - 400px);
 }
 
+.icon-menu a {
+  background-color: transparent;
+}
 
 
+// Helpers
+// ---------------
+
+// Spoiler tag within comments. Your comment should be: "[This is a spoiler sentence.](/spoiler)"
+a[href$="/spoiler"] {
+  background-color: #000;
+  color: #000;
+  &:hover {
+    color: $text-color;
+  }
+}
