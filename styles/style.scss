@@ -126,6 +126,8 @@ $item-border:             1px solid rgba(white, 0.2);
 $default-font:            Avant Garde, Avantgarde, Century Gothic, CenturyGothic, AppleGothic, sans-serif;
 $button-font:             Futura, Trebuchet MS, Arial, sans-serif;
 
+$header-height:           256px;
+
 @mixin decorative-corners() {
   position: relative;
   &:before {
@@ -210,7 +212,7 @@ body {
 #header {
   background: url(%%header%%) no-repeat right center;
   background-size: cover;
-  height: 192px;
+  height: $header-height;
   position: relative;
   z-index: 1;
   border-bottom: 1px solid rgba(white, 0.25);
@@ -892,14 +894,14 @@ form.content {
     background-image: url(%%daystogo%%);
     background-size: cover;
     position: absolute;
-    top: 144px;
+    top: $header-height - 48;
     z-index: 1;
     border: $item-border;
   }
   .titlebox {
     h1.redditname {
       position: absolute;
-      top: 400px;
+      top: $header-height + 208px;
       z-index: 100;
       line-height: 1.7rem;
       &:before {
@@ -925,7 +927,7 @@ form.content {
       margin: 0;
       position: absolute;
       right: 30px;
-      top: 404px;
+      top: $header-height + 212px;
       z-index: 100;
       a {
         border-radius: 0;
@@ -938,7 +940,7 @@ form.content {
   padding: 10px;
   margin: 0 20px;
   position: absolute;
-  top: 465px;
+  top: $header-height + 273px;
   width: 240px;
   z-index: 1;
   input[type=text] {
@@ -1040,7 +1042,7 @@ form.content {
   width: 300px;
   height: 35px;
   position: absolute;
-  top: 535px;
+  top: $header-height + 343px;
   a {
     line-height: 35px;
     @include button();
