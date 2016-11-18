@@ -440,6 +440,20 @@ body {
   }
 }
 
+.linkflair-spoiler {
+  a.title {
+    color: $accent-background-color;
+    background-color: $accent-background-color;
+    &:visited {
+      color: $accent-background-color;
+      background-color: $accent-background-color;
+    }
+    &:before {
+      content: "";
+    }
+  }
+}
+
 .organic-listing {
   margin-bottom: -10px;
   .link,
@@ -500,10 +514,9 @@ body {
     font-size: 1.3rem;
     border: 0;
     border-radius: 0;
-    padding: 0 5px 1px;
+    padding: 0 5px;
     margin-right: 7px;
     line-height: 1.9rem;
-    vertical-align: 2px;
     //text-shadow: none;
     @include decorative-corners();
   }
@@ -623,7 +636,8 @@ body {
   align-items: center;
   background-color: $item-background-color;
   @include decorative-corners();
-  &.self {
+  &.self,
+  &.default {
     background: url(%%thumbnail-placeholder%%) no-repeat center center;
     background-size: contain;
   }
@@ -643,7 +657,18 @@ body {
       color: $link-color-secondary;
       text-transform: capitalize;
     }
+    &.reported-stamp {
+      color: $body-background-color;
+      font-size: 1rem;
+      border: 0;
+    }
   }
+}
+
+.entry .buttons li.reported-stamp {
+  color: $body-background-color;
+  font-size: 1rem;
+  border: 0;
 }
 
 .comment .entry .buttons a {
