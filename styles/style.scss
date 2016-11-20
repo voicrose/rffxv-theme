@@ -9,16 +9,19 @@
 // ---------------
 // Use this to quickly locate sections of the stylesheet.
 
-// 1. CSS Reset
-// 2. FFXV Fonts!
-// 3. Variables & Mixins
-// 4. Typography
-// 5. Layout
-//    5.1 Header
-//    5.2 Main
-//    5.3 Side
-// 6. Background
-// 7. Mod page
+// 1.   CSS Reset
+// 2.   FFXV Fonts!
+// 3.   Variables & Mixins
+// 4.   Typography
+// 5.   Layout
+//      5.1    Header
+//      5.2    Main
+//      5.3    Side
+// 6.   Background
+// 7.   Mod page
+// 8.   Helpers
+// 9.   User Flairs
+// 10.  RES Compatibility
 
 
 // 1. CSS Reset
@@ -207,6 +210,7 @@ a {
 
 body {
   background-color: $body-background-color;
+  min-width: 920px;
 }
 
 #header {
@@ -273,13 +277,13 @@ body {
   bottom: 0;
 
   .redditname {
-    background: url(%%XV%%) no-repeat 23.6% center;
+    background: url(%%final-fantasy-xv-logo%%) no-repeat 23.6% center;
     background-size: contain;
     position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    bottom: 0;
+    width: 406px;
+    height: 81px;
+    left: 30px;
+    bottom: 70px;
     text-indent: 102%;
     white-space: nowrap;
     overflow: hidden;
@@ -547,6 +551,7 @@ body {
   margin-bottom: 10px;
   position: relative;
   flex-wrap: wrap;
+  border: $item-border;
 
   .content .details {
     margin-left: 0;
@@ -936,7 +941,7 @@ form.content {
     .fancy-toggle-button {
       margin: 0;
       position: absolute;
-      right: 30px;
+      margin-left: 170px;
       top: $header-height + 212px;
       z-index: 100;
       a {
@@ -1201,7 +1206,7 @@ body {
 }
 
 
-// Helpers
+// 8. Helpers
 // ---------------
 
 // Spoiler tag within comments. Your comment should be: "[This is a spoiler sentence.](/spoiler)"
@@ -1210,5 +1215,95 @@ a[href$="/spoiler"] {
   color: #000;
   &:hover {
     color: $text-color;
+  }
+}
+
+
+// 9. User Flairs
+// ---------------
+
+.author + .flair {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  vertical-align: -10px;
+  border: 0;
+  border-radius: 15px;
+  background: none;
+  background-color: transparent;
+  background-image: url(%%character-flairs%%);
+  background-size: 180px 120px;
+  &.flair-noctis    { background-position: 0 0; }
+  &.flair-ignis     { background-position: -30px 0; }
+  &.flair-gladio,
+  &.flair-gladiolus { background-position: -60px 0; }
+  &.flair-prompto   { background-position: -90px 0; }
+  &.flair-regis     { background-position: -120px 0; }
+  &.flair-iedolas   { background-position: -150px 0; }
+
+  &.flair-luna,
+  &.flair-lunafreya,
+  &.flair-Lunafreya { background-position: 0 -30px; }
+  &.flair-gentiana  { background-position: -30px -30px; }
+  &.flair-ardyn     { background-position: -60px -30px; }
+  &.flair-ravus     { background-position: -90px -30px; }
+  &.flair-cindy     { background-position: -120px -30px; }
+  &.flair-cid       { background-position: -150px -30px; }
+
+  &.flair-old-noctis{ background-position: 0 -60px; }
+  &.flair-cor       { background-position: -30px -60px; }
+  &.flair-iris      { background-position: -60px -60px; }
+  &.flair-aranea    { background-position: -90px -60px; }
+  &.flair-glauca    { background-position: -120px -60px; }
+  &.flair-nyx       { background-position: -150px -60px; }
+
+  &.flair-crowe     { background-position: 0 -90px; }
+  &.flair-libertus  { background-position: -30px -90px; }
+  &.flair-drautos   { background-position: -60px -90px; }
+  &.flair-luche     { background-position: -90px -90px; }
+  &.flair-carbuncle { background-position: -120px -90px; }
+  &.flair-kid-noctis{ background-position: -150px -90px; }
+}
+
+
+
+// 10. RES Compatibility
+// ---------------
+
+.res {
+  .RES-keyNav-activeElement,
+  .commentarea .RES-keyNav-activeElement .md,
+  .RES-keyNav-activeElement .md-container,
+  .commentarea .RES-keyNav-activeElement.entry .noncollapsed {
+    background: $accent-background-color !important;
+    border-radius: 0;
+  }
+
+  .RES-keyNav-activeElement .md-container,
+  .RES-keyNav-activeElement,
+  .commentarea .RES-keyNav-activeElement .md,
+  .commentarea .RES-keyNav-activeElement.entry .noncollapsed {
+    background: $accent-background-color !important;
+    border-radius: 0;
+  }
+
+  .res-commentBoxes {
+    &.res-commentBoxes-rounded .comment {
+      border-radius: 0 !important;
+    }
+    .comment {
+      border: $item-border !important;
+    }
+    .comment .comment,
+    .comment .comment .comment .comment,
+    .comment .comment .comment .comment .comment .comment,
+    .comment .comment .comment .comment .comment .comment .comment .comment,
+    .comment .comment .comment .comment .comment .comment .comment .comment .comment .comment {
+      background: $body-background-color !important;
+    }
+  }
+
+  .nestedlisting .entry {
+    margin-left: 35px !important;
   }
 }
