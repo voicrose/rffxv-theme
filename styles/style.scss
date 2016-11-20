@@ -890,6 +890,15 @@ form.content {
 // 5.3 Side
 // ---------------
 
+@keyframes fade-slides {
+  0%   { opacity: 0; }
+  23%  { opacity: 0; }
+  27%  { opacity: 1; }
+  73%  { opacity: 1; }
+  77%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
 .side {
   background-color: transparent;
   width: 300px;
@@ -901,17 +910,25 @@ form.content {
   .spacer {
     margin: 0;
   }
-  &:before {
+  &:before,
+  &:after {
     content: "";
     width: 300px;
     height: 240px;
     display: block;
-    background-image: url(%%daystogo%%);
     background-size: cover;
     position: absolute;
     top: $header-height - 48;
     z-index: 1;
     border: $item-border;
+    background-repeat: no-repeat;
+  }
+  &:before {
+    background-image: url(%%sidebar-slide1%%);
+  }
+  &:after {
+    background-image: url(%%sidebar-slide2%%);
+    animation: fade-slides 30s infinite;
   }
   .titlebox {
     h1.redditname {
