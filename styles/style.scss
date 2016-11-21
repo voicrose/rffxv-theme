@@ -117,6 +117,8 @@ $accent-color-secondary:  #696dd8;
 
 $text-color:              #c7c6d1;
 $text-color-muted:        #81809a;
+$text-color-danger:       #FF5252;
+
 $link-color-primary:      $accent-color-secondary;
 $link-color-secondary:    #a1a4ff;
 $link-color-muted:        #676896;
@@ -224,6 +226,22 @@ body {
 
 // 5.1 Header
 // ---------------
+
+#header-img-a {
+  width: 64px;
+  height: 48px;
+  background-image: url(%%alien-noctis%%);
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  &:hover {
+    transform: scaleX(-1);
+  }
+}
 
 #sr-header-area {
   background-color: rgba(#1C1C41, 0.24);
@@ -446,20 +464,6 @@ body {
   }
 }
 
-.linkflair-spoiler {
-  a.title {
-    color: $accent-background-color;
-    background-color: $accent-background-color;
-    &:visited {
-      color: $accent-background-color;
-      background-color: $accent-background-color;
-    }
-    &:before {
-      content: "";
-    }
-  }
-}
-
 .organic-listing {
   margin-bottom: -10px;
   .link,
@@ -513,18 +517,6 @@ body {
       color: $link-color-secondary;
       //text-shadow: 0 2px 4px #554bbd;
     }
-  }
-  .linkflairlabel {
-    background-color: transparent;
-    color: rgba($text-color, 0.5);
-    font-size: 1.3rem;
-    border: 0;
-    border-radius: 0;
-    padding: 0 5px;
-    margin-right: 7px;
-    line-height: 1.9rem;
-    //text-shadow: none;
-    @include decorative-corners();
   }
   .midcol {
     width: 60px !important;
@@ -1236,8 +1228,47 @@ a[href$="/spoiler"] {
 }
 
 
-// 9. User Flairs
+// 9. Flairs
 // ---------------
+
+// 9.1 Link Flairs
+
+.link {
+  .linkflairlabel {
+    background-color: transparent;
+    color: rgba($text-color, 0.5);
+    font-size: 1.3rem;
+    border: 0;
+    border-radius: 0;
+    padding: 0 5px;
+    margin-right: 7px;
+    line-height: 1.9rem;
+    //text-shadow: none;
+    @include decorative-corners();
+
+    &[title="SPOILERS"] {
+      color: $text-color-danger;
+    }
+  }
+}
+
+.linkflair-spoiler {
+  a.title {
+    color: $accent-background-color;
+    background-color: $accent-background-color;
+    &:visited {
+      color: $accent-background-color;
+      background-color: $accent-background-color;
+    }
+    &:hover {
+      color: $text-color;
+      transition: color 2s ease 0.5s;
+    }
+  }
+}
+
+
+// 9.2 User Flairs
 
 .author + .flair {
   width: 30px;
