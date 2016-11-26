@@ -17,6 +17,7 @@
 //      5.1    Header
 //      5.2    Main
 //      5.3    Side
+//      5.4    Submit
 // 6.   Background
 // 7.   Mod page
 // 8.   Helpers
@@ -410,6 +411,10 @@ body {
 .content {
   margin: 15px;
 
+  .content {
+    margin: 0;
+  }
+
   > h1 {
     font-size: 1.8rem;
     text-transform: capitalize;
@@ -776,7 +781,15 @@ body {
   padding: 5px;
 }
 
-.usertext {
+.btn {
+  margin: 0 10px 0 0;
+  @include button();
+  padding: 5px 10px;
+  font-size: 1.3rem;
+}
+
+.usertext,
+.bottom-area {
   button {
     margin: 0 10px 0 0;
     @include button();
@@ -1185,6 +1198,42 @@ form.content {
   .more {
     text-transform: capitalize;
   }
+}
+
+
+// 5.4 Submit
+// ---------------
+
+.roundfield {
+  background-color: $item-background-color;
+  border: $item-border;
+  padding: 15px;
+  color: $text-color;
+
+  &.info-notice {
+    color: $body-background-color;
+  }
+
+  .title {
+    color: $text-color;
+    text-transform: capitalize;
+  }
+
+  input[type="text"],
+  textarea {
+    @include textfield();
+    padding: 10px;
+    width: calc(100% - 30px);
+  }
+
+  .suggested-reddits {
+    text-transform: capitalize;
+    margin-bottom: 5px;
+  }
+}
+
+.bottom-area {
+  padding: 15px;
 }
 
 
